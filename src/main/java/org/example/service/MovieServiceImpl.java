@@ -1,19 +1,21 @@
 package org.example.service;
 
-import org.example.dao.MovieDaoImpl;
+import org.example.dao.MovieDao;
 import org.example.model.Movie;
 import org.springframework.stereotype.Repository;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-@Repository
+@Service
 public class MovieServiceImpl implements MovieService{
 
-    private final MovieDaoImpl movieDao;
+    private final MovieDao movieDao;
 
-    public MovieServiceImpl(MovieDaoImpl movieDao) {
+    public MovieServiceImpl(MovieDao movieDao) {
         this.movieDao = movieDao;
     }
+
 
     @Override
     public void saveMovie(Movie movie) {

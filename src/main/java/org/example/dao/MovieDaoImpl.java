@@ -3,13 +3,22 @@ package org.example.dao;
 import org.example.model.Movie;
 import org.springframework.stereotype.Repository;
 
-import javax.persistence.Entity;
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
+
+import jakarta.persistence.*;
+
+import java.util.ArrayList;
 import java.util.List;
 
 @Repository
 public class MovieDaoImpl implements MovieDao {
+
+    private final List<Movie> movies = new ArrayList<>();
+
+    public MovieDaoImpl() {
+        movies.add(new Movie("Interstellar", 2014L, "Christopher Nolan" ));
+        movies.add(new Movie("Django Unchained", 2012L, "Quentin Tarantino"));
+        movies.add(new Movie("Pirates of the Caribbean", 2003L, "Gore Verbinski"));
+    }
 
     @PersistenceContext
     private EntityManager entityManager;
