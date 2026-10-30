@@ -3,8 +3,10 @@ package org.example.service;
 import jakarta.transaction.Transactional;
 import org.example.dao.MovieDao;
 import org.example.model.Movie;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.ResponseStatus;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -29,6 +31,9 @@ public class MovieServiceImpl implements MovieService{
 
     @Override
     public void removeMovieById(Long id) {
+        if(movieDao.getMovie(id) == null) {
+            throw new MovieNotFoundException(id);
+        }
         movieDao.removeMovieById(id);
     }
 
@@ -44,6 +49,9 @@ public class MovieServiceImpl implements MovieService{
 
     @Override
     public Movie getMovie(Long id) {
+        if(movieDao.getMovie(id) == null) {
+            throw new MovieNotFoundException(id);
+        }
         return movieDao.getMovie(id);
     }
 
@@ -52,3 +60,4 @@ public class MovieServiceImpl implements MovieService{
     }
 
 }
+
