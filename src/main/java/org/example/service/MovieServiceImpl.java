@@ -1,20 +1,25 @@
 package org.example.service;
 
+import jakarta.transaction.Transactional;
 import org.example.dao.MovieDao;
 import org.example.model.Movie;
 import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
+@Transactional
 public class MovieServiceImpl implements MovieService{
+
 
     private final MovieDao movieDao;
 
     public MovieServiceImpl(MovieDao movieDao) {
         this.movieDao = movieDao;
     }
+
 
 
     @Override

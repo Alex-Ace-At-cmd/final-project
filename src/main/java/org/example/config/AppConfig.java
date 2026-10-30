@@ -51,6 +51,7 @@ public class AppConfig {
         factory.setJpaVendorAdapter(vendorAdapter);
         Properties properties = new Properties();
         properties.setProperty("hibernate.hbm2ddl.auto","update");
+        factory.setJpaProperties(properties);
 
         return factory;
     }

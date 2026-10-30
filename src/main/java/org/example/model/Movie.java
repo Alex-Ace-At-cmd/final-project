@@ -1,6 +1,10 @@
 package org.example.model;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Pattern;
+import jakarta.validation.constraints.Positive;
 
 @Entity
 @Table(name = "movies")
@@ -20,12 +24,17 @@ public class Movie {
     private Long id;
 
     @Column(name = "name")
+    @NotBlank(message = "Invalid input")
     private String name;
 
     @Column(name = "year")
+    @NotNull(message = "Invalid input")
+    @Positive(message = "Invalid input")
     private Long year;
 
     @Column(name = "director")
+    @NotBlank(message = "Invalid input")
+    @Pattern(regexp = "^[A-Za-zА-Яа-я .'-]+$", message = "Invalid input")
     private String director;
 
 

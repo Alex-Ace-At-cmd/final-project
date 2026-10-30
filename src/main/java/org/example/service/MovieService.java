@@ -5,6 +5,8 @@ import org.example.model.Movie;
 import java.util.List;
 
 public interface MovieService {
+
+
     void saveMovie(Movie movie);
 
     void removeMovieById(Long id);
@@ -16,5 +18,6 @@ public interface MovieService {
     Movie getMovie(Long id);
 
     List<Movie> searchMovies(String title);
+
 
 }
