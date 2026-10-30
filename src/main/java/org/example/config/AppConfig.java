@@ -25,16 +25,19 @@ import java.util.Properties;
 
 public class AppConfig {
 
-    @Autowired
-    private Environment env;
+    private final Environment env;
+
+    public AppConfig(Environment env) {
+        this.env = env;
+    }
 
     @Bean
     public DataSource getDataSource() {
         DriverManagerDataSource dataSource = new DriverManagerDataSource();
         dataSource.setDriverClassName(env.getProperty("db.driver"));
-        dataSource.setUrl(env.getProperty("db.url"));
-        dataSource.setUsername(env.getProperty("db.username"));
-        dataSource.setPassword(env.getProperty("db.password"));
+        dataSource.setUrl(env.getRequiredProperty("DB_URL"));
+        dataSource.setUsername(env.getRequiredProperty("DB_USERNAME"));
+        dataSource.setPassword(env.getRequiredProperty("DB_PASSWORD"));
         return dataSource;
     }
 

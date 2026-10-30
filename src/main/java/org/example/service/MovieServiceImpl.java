@@ -49,9 +49,6 @@ public class MovieServiceImpl implements MovieService{
 
     @Override
     public Movie getMovie(Long id) {
-        if(movieDao.getMovie(id) == null) {
-            throw new MovieNotFoundException(id);
-        }
         return movieDao.getMovie(id);
     }
 
